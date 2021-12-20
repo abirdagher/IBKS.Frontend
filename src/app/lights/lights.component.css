@@ -1,0 +1,41 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+.demo-table {
+    width: 100%;
+}
+
+.btn-style {
+    padding: 5px 10px;
+    margin-right: 5px;
+    border: 0;
+    background: #1976d2;
+    color: #fff;
+}
+
+.light {
+    background: #f9fafb;
+    color: #1976d2;
+}
+
+mat-header-cell {
+    color: #1976d2;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.mat-dialog-title {
+    color: #1976d2;
+}
+
+.warning {
+    color: #ffc107;
+    font-style: italic;
+}
+.loadingDiv{
+    display: flex;
+}
+.loadingDiv img{
+    margin:auto;
+    height: 45px;
+}

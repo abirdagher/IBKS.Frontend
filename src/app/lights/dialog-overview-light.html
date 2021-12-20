@@ -1,0 +1,36 @@
+<h4 mat-dialog-title>
+  <span *ngIf="data.light">Light ID: {{data.light?.id}}</span>
+  <span *ngIf="!data.light">Add Light</span>
+</h4>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput [value]="data.light?.name" #name>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <input matInput [value]="data.light?.description" #description>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Type</mat-label>
+    <mat-select [value]="data.light?.type?.id" #typeId>
+      <mat-option *ngFor="let type of data.types" [value]="type.id">
+        {{type.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Room</mat-label>
+    <mat-select [value]="data.light?.room?.id" #roomId>
+      <mat-option *ngFor="let room of data.rooms" [value]="room.id">
+        {{room.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <p> <span class="warning">{{data.warningMessage}}</span></p>
+</div>
+<div mat-dialog-actions class="text-center">
+  <button class='btn-style' mat-button cdkFocusInitial
+    (click)="save(name.value, description.value, typeId.value, roomId.value )">Save</button>
+  <button class='btn-style' mat-button (click)="onNoClick()">Cancel</button>
+</div>

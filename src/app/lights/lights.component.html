@@ -1,0 +1,54 @@
+<div class="col-12">
+
+  <p>
+    <button class="btn-style" (click)="openDialog()"><span class="bi-plus"></span>Add New Light</button>
+  </p>
+  <div *ngIf="loading" class="loadingDiv">
+    <img src="../assets/images/loading.gif" />
+  </div>
+  <mat-table *ngIf="!loading" [dataSource]="lights" class="mat-elevation-z8 demo-table">
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+      <mat-cell *matCellDef="let light">{{light.id}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+      <mat-cell class="name-cell" *matCellDef="let light">{{light.name}}</mat-cell>
+
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <mat-header-cell class="d-none d-sm-flex" *matHeaderCellDef>Description</mat-header-cell>
+      <mat-cell class="description-cell d-none d-sm-flex" *matCellDef="let light">{{light.description}}</mat-cell>
+
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <mat-header-cell class="d-none d-sm-flex" *matHeaderCellDef>Type</mat-header-cell>
+      <mat-cell class="type-cell d-none d-sm-flex" *matCellDef="let light">{{light.type.name}}</mat-cell>
+
+    </ng-container>
+
+    <ng-container matColumnDef="room">
+      <mat-header-cell class="d-none d-sm-flex" *matHeaderCellDef>Room</mat-header-cell>
+      <mat-cell class="room-cell d-none d-sm-flex" *matCellDef="let light">{{light.room.name}}</mat-cell>
+
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+      <mat-cell *matCellDef="let light">
+        <button class="btn-style light" mat-button (click)="openDialog(light)"><span class="bi-pencil"></span></button>
+        <button class="btn-style light" mat-button (click)="openMessageDialog(light)"><span
+            class="bi-trash"></span></button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: columnsToDisplay"></mat-row>
+
+  </mat-table>
+</div>
